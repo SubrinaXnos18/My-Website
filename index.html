@@ -205,73 +205,111 @@
         </div>
     </div>
 </div>
-
+			
 <style>
-    /* Flex container for skills */
-    .skills-container {
+/* Flex container for skills */
+.skills-container {
     display: flex;
-    justify-content: space-around; /* Or you can use space-between */
-    align-items: center;
-    flex-wrap: nowrap; /* Prevents wrapping */
-    gap: 80px; /* Adjust the space between circles (was 20px) */
-    padding: 20px; /* Optional padding around the container */
+    justify-content: center;  /* Center horizontally */
+    align-items: center;      /* Center vertically */
+    flex-wrap: wrap;          /* Allow wrapping on small screens */
+    gap: 20px;                /* Space between circles */
+    padding: 20px;            /* Optional padding */
+    text-align: center;       /* Center the text inside each skill circle */
 }
 
+/* Individual skill circle style */
+.skill-circle {
+    flex: 0 1 120px; /* Prevents excessive shrinking, sets base width */
+    max-width: 120px;
+    margin: 10px;    /* Add margin for spacing */
+}
+
+/* Circle styling */
+.circle {
+    --percentage: 0;
+    --circle-color: #000;
+    width: 120px;
+    height: 120px;
+    background: conic-gradient(var(--circle-color) calc(var(--percentage) * 1%), #fdfdfd 0);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    color: #000000;
+    position: relative;
+    border: 2px solid #020202;
+}
+
+.circle span {
+    position: absolute;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Hover effect on circles */
+.circle:hover {
+    transform: scale(1.1); /* Slightly enlarges the circle on hover */
+    transition: transform 0.3s ease;
+}
+
+/* Custom percentages for each circle */
+.circle[data-percentage="70"] {
+    --percentage: 70;
+}
+
+.circle[data-percentage="60"] {
+    --percentage: 60;
+}
+
+.circle[data-percentage="65"] {
+    --percentage: 65;
+}
+
+.circle[data-percentage="75"] {
+    --percentage: 75;
+}
+
+/* MEDIA QUERIES FOR RESPONSIVENESS */
+
+/* For tablets and below (width 768px and below) */
+@media (max-width: 768px) {
+    .skills-container {
+        flex-direction: column; /* Stack the circles vertically */
+    }
 
     .skill-circle {
-        flex: 0 1 120px; /* Prevents excessive shrinking, sets base width */
-        max-width: 120px;
+        flex: 0 1 100%;  /* Ensure full-width on smaller screens */
+        max-width: 150px; /* Reduce size slightly on smaller devices */
+        margin: 20px 0;   /* Add vertical spacing */
     }
 
     .circle {
-        --percentage: 0;
-        --circle-color: #000;
-        width: 120px;
-        height: 120px;
-        background: conic-gradient(var(--circle-color) calc(var(--percentage) * 1%), #fdfdfd 0);
-        border-radius: 50%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 16px;
-        color: #000000;
-        position: relative;
-        border: 2px solid #020202;
+        width: 100px;  /* Slightly smaller circles on mobile */
+        height: 100px;
+        font-size: 14px; /* Adjust font size for smaller screens */
+    }
+}
+
+/* For phones and small devices (width 480px and below) */
+@media (max-width: 480px) {
+    .skills-container {
+        padding: 10px;  /* Reduce padding on smaller screens */
     }
 
-    .circle span {
-        position: absolute;
-        text-align: center;
-        font-weight: bold;
+    .skill-circle {
+        max-width: 100px; /* Smaller max width */
+        margin: 15px 0;   /* Adjust vertical margins */
     }
 
-    .circle:hover {
-        transform: scale(1.1); /* Slightly enlarges the circle on hover */
-        transition: transform 0.3s ease;
+    .circle {
+        width: 80px;   /* Further reduce circle size */
+        height: 80px;
+        font-size: 12px; /* Smaller text */
     }
-
-    /* Custom percentages for each circle */
-    .circle[data-percentage="70"] {
-        --percentage: 70;
-    }
-
-    .circle[data-percentage="60"] {
-        --percentage: 60;
-    }
-
-    .circle[data-percentage="65"] {
-        --percentage: 65;
-    }
-
-    .circle[data-percentage="75"] {
-        --percentage: 75;
-    }
+}
 </style>
-
-
-
-
-
 
 			
 		<!-- /.container -->
